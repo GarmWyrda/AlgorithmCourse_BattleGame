@@ -62,7 +62,11 @@ template<typename T> void Pile<T>::empiler(const T& newItem) throw (std::length_
 
 template<typename T> T Pile<T>::depiler() throw (std::logic_error) {
 	if (!estVide()) {
+		T element = this->array.back();
+		this->array.pop_back();
 		top -= 1;
-		return 0; //A COMPLETER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	}
+	else {
+		throw logic_error("Stack is empty");
 	}
 }
