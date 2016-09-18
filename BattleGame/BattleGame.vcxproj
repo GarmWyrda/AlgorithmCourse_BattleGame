@@ -145,12 +145,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="battle.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Pile.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="battle.cpp" />
     <ClCompile Include="BattleGame.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -5,9 +5,10 @@
 
 Card::Card()
 {
-	value = rand() % 10 + 1;
-	bonus = rand() % 4 + 1;
-	color = rand() % 2;
+	value = (short)rand() % 10 + 1;
+	bonus = (short)rand() % 4 + 1;
+	int forColor = rand() % 2;
+	color = (bool)forColor;
 }
 
 
@@ -15,47 +16,57 @@ Card::~Card()
 {
 }
 
-int Card::getValue()
+short Card::getValue() const
 {
 	return value;
 }
 
-int Card::getBonus()
+short Card::getBonus() const
 {
 	return bonus;
 }
 
-bool Card::getColor()
+bool Card::getColor() const
 {
 	return color;
 }
 
-int Card::isGreaterThan(Card & otherCard) const
+int Card::isGreaterThan(Card & otherCard)
 {
-	int returnValue;
+	int result;
 	if (value > otherCard.value) {
-		returnValue = 1;
+		result = 1;
 	}else if(value < otherCard.value) {
-		returnValue =  -1;
+		result =  -1;
 	}else if (color > otherCard.color) {
-		returnValue = 1;
+		result = 1;
 	}else if (color < otherCard.color) {
-		returnValue = -1;
+		result = -1;
 	}else {
-		returnValue = 0;
+		result = 0;
 	}
-	return returnValue;
+	return result;
 }
 
-int Card::cardScore() const
+float Card::cardScore() const
 {
-	double colorValue;
-	if (color == 0) {
-		colorValue = 1;
-	}
-	else {
+	float colorValue=1;
+	if (color == 1) {
 		colorValue = 1.5;
 	}
-	int cardScore = value*colorValue*bonus;
+	float cardScore = value*colorValue*bonus;
 	return cardScore;
+}
+
+std::ostream & operator<<(std::ostream & stream, const Card card)
+{
+	string color;
+	if (card.getColor()) {
+		color = "red";
+	}
+	else {
+		color = "black";
+	}
+	stream << "Value : " << card.getValue() << " Bonus : " << card.getBonus() << " Color : " << color << " Playing Value : " << card.cardScore() << std::endl;
+	return stream;
 }

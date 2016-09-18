@@ -30,6 +30,9 @@
     <ClInclude Include="Pile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="battle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Card.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="battle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
