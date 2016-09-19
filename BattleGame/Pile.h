@@ -53,20 +53,18 @@ template<typename T> Pile<T>::~Pile()
 
 template<typename T> void Pile<T>::empiler(const T& newItem) throw (std::length_error){
 	if (this->array.size() >= MAX_PILE) {
-		throw length_error("the stack is full");
+		throw std::length_error("the stack is full");
 	}
 	this->array.push_back(newItem);
 }
 
 template<typename T> T Pile<T>::depiler() throw (std::logic_error) {
-	if (this.estVide()) {
-		throw logic_error("Stack is empty");
+	if (this->array.empty()) {
+		throw std::logic_error("Stack is empty");
 	}
-	else {
 		T element = this->array.back();
 		this->array.pop_back();
 		return element;
-	}
 }
 
 template<typename T> bool Pile<T>::estVide() const {
@@ -78,7 +76,7 @@ template<typename T> int Pile<T>::taille() const {
 }
 
 template<typename T> const T& Pile<T>::sommet() const throw (std::length_error) {
-	if (this.estVide()) {
+	if (this->array.empty()) {
 		throw std::length_error("Stack is empty");
 	}
 	return this->array.back();

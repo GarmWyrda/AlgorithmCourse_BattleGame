@@ -8,6 +8,9 @@ class battle
 public:
 	battle(int nbCardsPerPlayer, Pile<Card> deck);
 	~battle();
+	void exchangeSetsOfDecks();
+	void distributeCards();
+	Pile<Card>* startGame();
 
 private:
 	int nbCardsPerPlayer;
