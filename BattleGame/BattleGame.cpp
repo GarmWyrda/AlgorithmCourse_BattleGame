@@ -49,7 +49,9 @@ int main()
 		battleGame.startGame();
 		std::cout << "Another game ?" << std::endl;
 		std::cout << "Type 1 if you want to play again with a new deck (same amount of cards per player)" << std::endl;
-		std::cout << "Type 2 if you want to play with your \"Gain Decks\", we'll then use the smallest Deck" << std::endl;
+		if (!battleGame.getIsGameOver()) {
+			std::cout << "Type 2 if you want to play with your \"Gain Decks\", we'll then use the smallest Deck" << std::endl;
+		}
 		std::cout << "Type anything else if you want to quit" << std::endl;
 		std::getline(std::cin, input);
 		int answer = 0;

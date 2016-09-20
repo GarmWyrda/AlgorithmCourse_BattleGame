@@ -13,11 +13,17 @@ battle::battle(int nbCardsPerPlayer, Pile<Card> deck)
 	this->playersDecksWon[1] = Pile<Card>(this->nbCardsPerPlayer * 2);
 	this->gameResult[0] = -1;
 	this->gameResult[1] = -1;
+	this->isGameOver = false;
 }
 
 
 battle::~battle()
 {
+}
+
+bool battle::getIsGameOver()
+{
+	return this->isGameOver;
 }
 
 void battle::exchangeSetsOfDecks()
@@ -36,7 +42,7 @@ void battle::distributeCards()
 	}
 }
 
-Pile<Card>* battle::startGame()
+void battle::startGame()
 {
 	std::cout << "Player 1's Deck" << std::endl;
 	std::cout << playersDecks[0] << std::endl;
@@ -91,5 +97,7 @@ Pile<Card>* battle::startGame()
 		std::cout << "It 's a tie ! Both players has a score of : " << scorePlayer1 << std::endl;
 	}
 	
-	return playersDecksWon;
+	if (playersDecksWon[0].taille() == 0 || playersDecksWon[1].taille() == 0) {
+		this->isGameOver = true;
+	}
 }
