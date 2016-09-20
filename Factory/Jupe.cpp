@@ -17,5 +17,5 @@ void Jupe::refine()
 
 void Jupe::print(ostream & stream) const
 {
-	stream << "is this part Refined ? (jupe) : " << this->isRefined;
+	stream << "Jupe, refined ? : " << this->isRefined;
 }

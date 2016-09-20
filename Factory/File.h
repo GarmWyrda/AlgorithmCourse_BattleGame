@@ -18,7 +18,7 @@ public: // constructeurs et destructeurs:
 	bool estPleine() const;
 	const T& premier() const; // tête de la file
 	const T& dernier() const; // queue de la file // surcharges d'opérateurs
-	const File<T>& operator = (const File<T>&) throw (bad_alloc); 
+	const File<T>& operator = (const File<T>&); 
 	template <typename U> friend std::ostream& operator <<
 		(std::ostream& f, const File<U>& q);
 
@@ -85,7 +85,7 @@ template<typename T> const File<T>& File::operator=(const File<T>& file) {
 
 template<typename U> std::ostream & operator<<(std::ostream & stream, const File<U>& file)
 {
-	for (int i = file.size(); i > 0; i--) {
+	for (int i = file.size()-1; i >= 0; i--) {
 		stream << file.array[i];
 	}
 	return stream;

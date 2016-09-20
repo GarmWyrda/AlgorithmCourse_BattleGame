@@ -13,11 +13,11 @@ public:
 	Machine();
 	~Machine();
 	void receivePartPiston(T);
-	void refine();
+	void refine();	//TODO
 
 private:
-	File<T> fileEntrante[1];
-	File<T> fileSortante[1];
+	File<T> fileEntrante;
+	File<T> fileSortante;
 };
 
 template<>
@@ -29,10 +29,11 @@ public:
 	void receivePartPiston(Tete);
 	void receivePartPiston(Jupe);
 	void receivePartPiston(Axe);
+	void assemble(); //TODO
 
 private:
 	File<PartPiston> fileEntrante[3];
-	File<Piston> fileSortante[1];
+	File<Piston> fileSortante;
 };
 
 template<typename T> Machine::Machine() {
@@ -44,21 +45,14 @@ template<typename T> Machine::~Machine() {
 }
 
 template<typename T> void Machine::receivePartPiston(T partPiston) {
-	this->fileEntrante[0].enfiler(partPiston);
+	this->fileEntrante.enfiler(partPiston);
 }
 
-template<typename T> void Machine::refine() {
-	if (fileEntrante->isEmpty())
-	{
-		std::this_thread::sleep_for(std::chrono::seconds(EMPTY_QUEUE_PROCESS_TIMEOUT));
-	}
-	else
-	{
-		Part* part = inQueue->pop();
-		part->refine();
-		outQueue->push(part);
-	}
+/*
+template<typename T> void Machine::refine() {	//TODO
+	
 }
+*/
 
 template<Piston> Machine::Machine() {
 
@@ -79,3 +73,9 @@ template<Piston> void Machine::receivePartPiston(Jupe partPiston) {
 template<Piston> void Machine::receivePartPiston(Axe partPiston) {
 	this->fileEntrante[2].enfiler(partPiston);
 }
+
+/*
+template<Piston> void Machine::assemble() {	//TODO
+
+}
+*/

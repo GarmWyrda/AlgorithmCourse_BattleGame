@@ -17,5 +17,5 @@ void Tete::refine()
 
 void Tete::print(ostream & stream) const
 {
-	stream << "is this part Refined ? (tete) : " << this->isRefined;
+	stream << "Tete, refined ? " << this->isRefined;
 }

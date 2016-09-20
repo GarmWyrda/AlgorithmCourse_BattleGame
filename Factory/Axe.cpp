@@ -17,5 +17,5 @@ void Axe::refine()
 
 void Axe::print(ostream & stream) const
 {
-	stream << "is this part Refined ? (axe) : " << this->isRefined;
+	stream << "Axe, refined ? : " << this->isRefined;
 }

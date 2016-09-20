@@ -2,8 +2,9 @@
 #include "Piston.h"
 
 
-Piston::Piston()
+Piston::Piston(Tete tete, Jupe jupe, Axe axe)
 {
+
 }
 
 
