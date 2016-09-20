@@ -88,7 +88,7 @@ template<typename T> const Pile<T>& Pile<T>::operator=(const Pile<T> newPile) {
 }
 
 template<typename U> std::ostream & operator<<(std::ostream & stream, const Pile<U> pile) {
-	for (int i = pile.taille() - 1; i >= 0; i--) {
+	for (int i = pile.taille(); i > 0; i--) {
 		stream << pile.array[i];
 	}
 	return stream;
