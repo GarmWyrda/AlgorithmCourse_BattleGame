@@ -11,8 +11,6 @@ battle::battle(int nbCardsPerPlayer, Pile<Card> deck)
 	this->playersDecks[1] = Pile<Card>(this->nbCardsPerPlayer);
 	this->playersDecksWon[0] = Pile<Card>(this->nbCardsPerPlayer * 2);
 	this->playersDecksWon[1] = Pile<Card>(this->nbCardsPerPlayer * 2);
-	this->gameResult[0] = -1;
-	this->gameResult[1] = -1;
 	this->isGameOver = false;
 }
 

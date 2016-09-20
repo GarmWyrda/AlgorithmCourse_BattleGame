@@ -33,12 +33,42 @@
     <ClInclude Include="Machine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PartPiston.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Jupe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tete.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Piston.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Factory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PartPiston.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Jupe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tete.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Piston.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

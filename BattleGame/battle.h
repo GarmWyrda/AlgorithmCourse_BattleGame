@@ -17,7 +17,6 @@ private:
 	int nbCardsPerPlayer;
 	Pile<Card> deck;
 	Pile<Card> playersDecks[2], playersDecksWon[2];
-	int gameResult[2];
 	bool isGameOver;
 
 };
