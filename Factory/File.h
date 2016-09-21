@@ -67,18 +67,18 @@ template<typename T> bool File<T>::estVide() const{
 }
 
 template<typename T> bool File<T>::estPleine() const {
-	return this->array.size >= this->max_size;
+	return this->array.size() >= this->max_size;
 }
 
-template<typename T> const T& File::premier() const {
+template<typename T> const T& File<T>::premier() const {
 	return this->array.front();
 }
 
-template<typename T> const T& File::dernier() const {
+template<typename T> const T& File<T>::dernier() const {
 	return this->array.back();
 }
 
-template<typename T> const File<T>& File::operator=(const File<T>& file) {
+template<typename T> const File<T>& File<T>::operator=(const File<T>& file) {
 	this->array = file.array;
 	return *this;
 }

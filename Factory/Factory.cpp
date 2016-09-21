@@ -52,27 +52,52 @@ int main()
 	PartPiston* newPistonPart = NULL;
 	bool newPartFromBox = false;
 	
+	auto start = std::chrono::system_clock::now();	//The simulation starts now
 	std::thread(simulatingBoxOfPistonParts, &keepGoing, &newPistonPart, &newPartFromBox);
 
-	std::thread t(MT.refine);
+	std::thread t(&Machine<Tete>::refine, &MT);
 	t.detach();
-	std::thread j(MJ.refine);
+	std::thread j(&Machine<Jupe>::refine, &MJ);
 	j.detach();
-	std::thread a(MA.refine);
+	std::thread a(&Machine<Axe>::refine, &MA);
 	a.detach();
-	std::thread p(MP.assemble);
+	std::thread p(&Machine<Piston>::assemble, &MP);
 	p.detach();
 
-	while (MP.getFileSortante.taille() < NB_PISTONS) {
+	while (MP.getFileSortante().taille() < NB_PISTONS) {
 		if (newPartFromBox) {
 			newPartFromBox = false;
-			if (typeid(newPartFromBox).name == "Tete") {
-				MT.receivePartPiston(newPistonPart);
+			Tete* partTete = dynamic_cast<Tete*>(newPistonPart);	//idée du dynamic_cast de Louis Gerard
+			if (partTete == NULL) { //if the dynamic_cast is NULL then it's not a "Tete"
+				Jupe* partJupe = dynamic_cast<Jupe*>(newPistonPart);
+				if (partJupe == NULL) { //if the dynamic_cast is NULL then it's not a "Jupe"
+					Axe* partAxe = dynamic_cast<Axe*>(newPistonPart);
+					if (partAxe == NULL) { throw std::bad_cast(); }
+					else { 
+						MA.receivePartPiston(*partAxe);
+					}
+				}
+				else {//The part is a skirt
+					MJ.receivePartPiston(*partJupe);
+				}
 			}
-			if (typeid(newPartFromBox).name == "Jupe") {
-
+			else { //The part is a Head
+				MT.receivePartPiston(*partTete);
 			}
+			free(newPistonPart);
 		}
 	}
+
+	//The simulation is complete, we have filled the Queue (File) with pistons
+	keepGoing = false;
+	MT.stoppingMachine();
+	MJ.stoppingMachine();
+	MA.stoppingMachine();
+	MP.stoppingMachine();
+
+	auto end = std::chrono::system_clock::now();	// The simulation ends now
+	auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(end - start);
+	std::cout << "Simulation is over, it took : " << elapsed.count() << " seconds to complete, in order to build " << NB_PISTONS << " Pistons." << std::endl;
+	system("pause");
 }
 
