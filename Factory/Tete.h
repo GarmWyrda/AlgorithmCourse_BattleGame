@@ -10,5 +10,5 @@ public:
 	void print(ostream&) const;
 
 private:
-	const float REFINING_TIME = 2;
+	const int REFINING_TIME = 120;	//seconds
 };

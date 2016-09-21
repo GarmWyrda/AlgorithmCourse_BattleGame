@@ -6,7 +6,7 @@
 class Piston
 {
 public:
-	Piston(Tete, Jupe, Axe);
+	Piston();
 	~Piston();
 
 };
