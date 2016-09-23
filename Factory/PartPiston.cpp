@@ -21,7 +21,7 @@ void PartPiston::print(ostream & stream) const
 	stream << "is this part refined ? : " << this->isRefined;
 }
 
-std::ostream & operator<<(ostream & stream, const PartPiston & partPiston)
+std::ostream & operator<<(ostream& stream, const PartPiston &partPiston)
 {
 	partPiston.print(stream);
 	return stream;

@@ -23,7 +23,7 @@ public: // constructeurs et destructeurs:
 		(std::ostream& f, const File<U>& q);
 
 private: // ...Modèle d'implantation
-	const static int DEFAULT_SIZE = 100;
+	const static int DEFAULT_SIZE = 1000;
 	list<T> array;
 	int max_size;
 };
