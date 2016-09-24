@@ -17,9 +17,9 @@
 #define RANDOM_PARTS_SPAWNING_RATE 5
 
 void simulatingBoxOfPistonParts(bool* keepGoing, PartPiston** newPistonPart, bool* newPartFromBox) {
+	srand(time(NULL)); // initializes random seed
 	while (*keepGoing) {
 
-		//std::cout << "test" << std::endl;
 		int newPartOfPiston = rand() % 3 + 1;
 		//std::cout << newPartOfPiston << std::endl;
 		/*switch (newPartOfPiston) {
@@ -54,7 +54,6 @@ void simulatingBoxOfPistonParts(bool* keepGoing, PartPiston** newPistonPart, boo
 		}
 		*newPartFromBox = true;
 
-		//std::cout << "testFin" << std::endl;
 		std::cout << "The next Part is : " << **newPistonPart << std::endl;
 		std::this_thread::sleep_for(std::chrono::seconds(RANDOM_PARTS_SPAWNING_RATE));
 
@@ -62,7 +61,7 @@ void simulatingBoxOfPistonParts(bool* keepGoing, PartPiston** newPistonPart, boo
 }
 int main()
 {
-	srand(time(NULL)); // initializes random seed
+	//srand(time(NULL)); // for some reason, I had to move this statement in "simulatingBoxOfParts" else I got the exact same output. (random was not random)
     
 	Machine<Tete> MT;
 	Machine<Jupe> MJ;
@@ -73,6 +72,7 @@ int main()
 	PartPiston* newPart = NULL;
 	bool newPartFromBox = false;
 	
+	std::cout << "In order for the simulation to be short enough, I decreased the number of Pistons to make, currently at : " << NB_PISTONS << " and the breakdown of machines, last seconds, not minutes" << std::endl;
 	auto start = std::chrono::system_clock::now();	//The simulation starts now
 
 /*
@@ -104,20 +104,16 @@ int main()
 					Axe* partAxe = dynamic_cast<Axe*>(newPart);
 					if (partAxe == NULL) { throw std::bad_cast(); }
 					else { 
-						//std::cout << "test Axe received" << std::endl;
 						MA.receivePartPiston(*partAxe);
 					}
 				}
 				else {//The part is a skirt
-					//std::cout << "test Jupe received" << std::endl;
 					MJ.receivePartPiston(*partJupe);
 				}
 			}
 			else { //The part is a Head
 				MT.receivePartPiston(*partTete);
 			}
-			//std::cout << "freeNewPistonpart" << std::endl;
-			//free(newPart);
 			if (MA.getFileSortante().taille() > 0) {
 				MP.receivePartPiston(MA.getFileSortante().defiler());
 			}
@@ -129,7 +125,7 @@ int main()
 			}
 		}
 	}
-
+	free(newPart);
 	//The simulation is complete, we have filled the Queue (File) with pistons
 	keepGoing = false;
 	MT.stoppingMachine();

@@ -21,5 +21,5 @@ void Axe::refine()
 
 void Axe::print(ostream & stream) const
 {
-	stream << "Axe, refined ? : " << this->isRefined;
+	stream << "Axe, refined ? " << this->isRefined;
 }

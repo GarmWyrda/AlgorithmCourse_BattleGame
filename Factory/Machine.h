@@ -43,7 +43,6 @@ template<typename T> File<T>& Machine<T>::getFileSortante()
 
 template<typename T> void Machine<T>::receivePartPiston(T partPiston) {
 	this->fileEntrante.enfiler(partPiston);
-	std::cout << "test : new Piece " << typeid(partPiston).name() << "in queue" << std::endl;
 }
 
 template<typename T> void Machine<T>::refine() {
@@ -66,7 +65,6 @@ template<typename T> void Machine<T>::refine() {
 			
 			partPiston.refine();
 			this->fileSortante.enfiler(partPiston);
-			std::cout << "test : new Refined Piece " << typeid(partPiston).name() << "in queue (machine non P)" << std::endl;
 		}
 	}
 	
