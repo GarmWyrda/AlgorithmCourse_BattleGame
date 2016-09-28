@@ -13,7 +13,7 @@
 #include "Machine.h"
 #include "File.h"
 
-#define NB_PISTONS 3
+#define NB_PISTONS 100
 #define RANDOM_PARTS_SPAWNING_RATE 5
 
 void simulatingBoxOfPistonParts(bool* keepGoing, PartPiston** newPistonPart, bool* newPartFromBox) {
@@ -72,7 +72,10 @@ int main()
 	PartPiston* newPart = NULL;
 	bool newPartFromBox = false;
 	
-	std::cout << "In order for the simulation to be short enough, I decreased the number of Pistons to make, currently at : " << NB_PISTONS << " and the breakdown of machines, last seconds, not minutes" << std::endl;
+	std::cout << "Simulation for building : " << NB_PISTONS << " pistons" << std::endl;
+	std::cout << "In order for the simulation to be short enough, I decreased the amount of time necessary for " << std::endl;
+	std::cout << "-The breakdown of machines : last seconds, not minutes" << std::endl;
+	std::cout << "-The time to refine and assemble the pieces : also in seconds and not minutes" << std::endl;
 	auto start = std::chrono::system_clock::now();	//The simulation starts now
 
 /*

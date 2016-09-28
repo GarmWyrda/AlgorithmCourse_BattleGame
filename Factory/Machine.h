@@ -107,12 +107,13 @@ public:
 				if (isMachineBroken == 0)
 				{
 					int repairTime = (rand() % 6 + 5);
-					std::cout << "Attention ! Machine Piston needs reparation. Estimated time before it is functional : " << repairTime << " minutes." << std::endl;
-					std::this_thread::sleep_for(std::chrono::seconds(repairTime * 60));
+					std::cout << "Attention ! Machine Piston needs reparation. Estimated time before it is functional : " << repairTime << " seconds." << std::endl;
+					std::this_thread::sleep_for(std::chrono::seconds(repairTime));	// add "* 60" to make breaks last minutes and not seconds
 					std::cout << "Machine Piston is now functional." << std::endl;
 				}
 
 				Piston newPiston;
+				std::this_thread::sleep_for(std::chrono::seconds(this->ASSEMBLING_TIME));
 				this->fileSortante.enfiler(newPiston);
 			}
 		}
@@ -126,6 +127,7 @@ public:
 	void stoppingMachine() { this->keepGoing = false; };
 
 private:
+	const int ASSEMBLING_TIME = 1; //seconds originally 60sec
 	File<PartPiston> fileEntrante[3];
 	File<Piston> fileSortante;
 	bool keepGoing = true;

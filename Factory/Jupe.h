@@ -10,6 +10,6 @@ public:
 	void print(ostream&) const;
 
 private:
-	const int REFINING_TIME = 180;	//seconds
+	const int REFINING_TIME = 3;	//seconds originally 180sec
 };
 

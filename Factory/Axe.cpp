@@ -14,7 +14,7 @@ Axe::~Axe()
 
 void Axe::refine()
 {
-	std::this_thread::sleep_for(std::chrono::seconds(REFINING_TIME));
+	std::this_thread::sleep_for(std::chrono::seconds(this->REFINING_TIME));
 	this->isRefined = true;
 	std::cout << *this << std::endl;
 }
